@@ -11,8 +11,8 @@ The connection logic is implemented in Pb2.jsx. Visually, only buttons are displ
 
 Download or clone
 npm install
-npm run dev || It will pop up an error in node_modules/@digitalpersona/devices/dist/es5/devices/websdk/channel.js:3:7: You must enter that path and comment the WebSdk import on line 3.
 npm run dev
+
 +++++++++++++++++ WHAT YOU WILL FIND +++++++++++++++++++++++++++++
 
 In the browser console, you will observe what each button does. Keep in mind that the intention is to understand the WebSdk process. First, the devices are listed, then the first device in the array is displayed ("usually, you have one connected"), then the device is initiated for reading. At this point, it starts listening if the reader detects fingerprints and logs each read. Capture converts the fingerprint's base64 into an image, and finally, the device is stopped. Obviously, in a real system, these processes are hidden, but it's necessary to see the function of each one. If you want to improve something, go ahead. Contributions are welcome.
