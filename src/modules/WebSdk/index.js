@@ -4904,7 +4904,11 @@
     } else if (typeof exports === 'object') {
       return module.exports = factory();
     } else {
-      return root.ifvisible = factory();
+        if (root) {
+            root.ifvisible = factory();
+            return root.ifvisible;
+          }
+          return factory();
     }
   })(this, function() {
     var addEvent, customEvent, doc, fireEvent, hidden, idleStartedTime, idleTime, ie, ifvisible, init, initialized, status, trackIdleStatus, visibilityChange;
@@ -6381,12 +6385,14 @@
         var core = window.WebSdkCore;
         if (!core)
             throw new Error("WebSdkCore is not loaded.");
-
+        
+        var ifvisible = window.ifvisible;
         window.WebSdk = factory(core, core.channelOptions, core.channelClient, ifvisible);
     }
 })(function (core, WebChannelOptions, WebChannelClient, ifvisible) {
     core.log('loaded websdk.client.ui');
 
+    var ifvisible = window.ifvisible;
     core.visibilityApi = ifvisible;
 
     return {
